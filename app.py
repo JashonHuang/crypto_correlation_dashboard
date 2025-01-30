@@ -224,6 +224,7 @@ def update_correlation_matrix(n_clicks, selected_assets, selected_interval):
 
     # Create an upper triangular mask
     triangular_matrix = get_lower_triangular(correlation_matrix)
+    hover_text = triangular_matrix.applymap(lambda x: f"Correlation: {x:.2f}" if not np.isnan(x) else "")
 
     # Heatmap visualization
     fig = px.imshow(
@@ -233,6 +234,12 @@ def update_correlation_matrix(n_clicks, selected_assets, selected_interval):
         labels=dict(x="Asset", y="Asset", color="Correlation"),
         x=triangular_matrix.columns,
         y=triangular_matrix.index
+    )
+    
+    fig.update_traces(
+        hovertemplate="<b>Asset X:</b> %{x}<br><b>Asset Y:</b> %{y}<br>%{customdata}<extra></extra>",
+        customdata=hover_text.values,
+        hoverinfo="text"  # Suppresses default hover showing NaN
     )
 
     fig.update_layout(
