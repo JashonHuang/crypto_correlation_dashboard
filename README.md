@@ -4,3 +4,4 @@ An easy implemented python script to realise the  dashoboard to plot correlation
 
 ## 1. read conda_guide.md to install conda 
 ## 2. read conda_cmd.txt to create a conda virtual env, and install the dependencies , 
+## 3. run python app.py   and then visit  http://127.0.0.1:8050/
