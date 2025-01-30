@@ -1,0 +1,3 @@
+conda create -n dash_env python=3.8.0
+conda create -n dash_env python=3.8
+conda install -c conda-forge dash dash-bootstrap-components pandas numpy requests plotly
