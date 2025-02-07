@@ -222,7 +222,7 @@ def update_correlation_matrix(n_clicks, selected_assets, selected_interval):
     correlation_matrix = price_df.corr(method="pearson")
     # print(correlation_matrix.head())
 
-    # Create an upper triangular mask
+    # Create an lower triangular mask
     triangular_matrix = get_lower_triangular(correlation_matrix)
     hover_text = triangular_matrix.applymap(lambda x: f"Correlation: {x:.2f}" if not np.isnan(x) else "")
 
